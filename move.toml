@@ -1,0 +1,14 @@
+[package]
+name = "clouthack"
+version = "0.0.1"
+authors = ["Your Name"]
+license = "Apache-2.0"
+
+[addresses]
+clouthack = "0x7229ae25e3ce151f1d63e58057dc70deda74711a3e5fa5c40443ee17990b9aef"
+
+[dependencies]
+AptosFramework = { local = "C:/Users/Admin/Desktop/clouthack/aptos-core/aptos-move/framework/aptos-framework" }
+
+[dev-addresses]
+clouthack = "0x7229ae25e3ce151f1d63e58057dc70deda74711a3e5fa5c40443ee17990b9aef"
