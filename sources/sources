@@ -1,0 +1,70 @@
+module 0x7229ae25e3ce151f1d63e58057dc70deda74711a3e5fa5c40443ee17990b9aef::hackpass {
+
+    use std::signer;
+    use std::table;
+    use std::vector;
+
+    struct CompanyRecords has key, store {
+        verified_users: table::Table<address, bool>,
+    }
+
+    struct HackPassNFT has store {
+        name: vector<u8>,
+        description: vector<u8>,
+        owner: address,
+        level: u8,
+    }
+
+    struct UserNFTCollection has key, store {
+        nfts: table::Table<u64, HackPassNFT>,
+        counter: u64,
+        nft_ids: vector<u64>,
+    }
+
+    public entry fun init_company(account: &signer) {
+        let company_id = signer::address_of(account);
+        assert!(!exists<CompanyRecords>(company_id), 101);
+        let records = CompanyRecords { verified_users: table::new<address, bool>() };
+        move_to(account, records);
+    }
+
+    public entry fun add_verified_user(account: &signer, user: address) {
+        let company_id = signer::address_of(account);
+        let records = borrow_global_mut<CompanyRecords>(company_id);
+        table::add(&mut records.verified_users, user, true);
+    }
+
+    public entry fun request_nft(account: &signer, company_id: address, level: u8) {
+        let user = signer::address_of(account);
+        let records = borrow_global<CompanyRecords>(company_id);
+        assert!(table::contains(&records.verified_users, user), 100);
+
+        if (!exists<UserNFTCollection>(user)) {
+            let new_collection = UserNFTCollection {
+                nfts: table::new<u64, HackPassNFT>(),
+                counter: 0,
+                nft_ids: vector::empty<u64>(),
+            };
+            move_to(account, new_collection);
+        };
+
+        // Instead of assigning `borrow_global_mut` to a variable, directly use `&mut`
+        assert!(borrow_global_mut<UserNFTCollection>(user).counter < 18_446_744_073_709_551_615, 102);
+
+        let nft_id = borrow_global_mut<UserNFTCollection>(user).counter;
+
+        let nft = HackPassNFT {
+            name: b"Certificate NFT",
+            description: b"Verified participation certificate",
+            owner: user,
+            level: level,
+        };
+
+        let collection_ref = borrow_global_mut<UserNFTCollection>(user);
+        table::add(&mut collection_ref.nfts, nft_id, nft);
+        vector::push_back(&mut collection_ref.nft_ids, nft_id);
+        collection_ref.counter = collection_ref.counter + 1;
+    }
+
+
+}
