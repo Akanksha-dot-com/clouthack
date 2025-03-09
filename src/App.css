@@ -1,0 +1,67 @@
+/* Apply the Black Ivy color theme */
+body {
+  background-color: #1A1A1A; /* Dark background */
+  color: #edf6ed; /* Light text */
+  font-family: 'Poppins', sans-serif; /* Modern, clean font */
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar styling like Salesforce */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2a9f6a; /* Dark Green */
+  padding: 15px 40px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.navbar h2 {
+  font-size: 35px;
+  font-weight: bold;
+  color: #f4f8f4; /* Light Green */
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #D0E0D0; /* Light text */
+  margin: 0 15px;
+  font-size: 18px;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+  color: #A3D8A3; /* Light Green */
+}
+
+/* Centered content */
+.container {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+/* Large Clouthack title */
+h1 {
+  font-size: 40px;
+  font-weight: bold;
+  color: #A3D8A3; /* Light Green */
+}
+
+/* Styling for the button */
+button {
+  background-color: #4A7E4A; /* Medium Green */
+  color: #D0E0D0;
+  border: none;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #A3D8A3; /* Lighter green */
+}

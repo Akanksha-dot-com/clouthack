@@ -1,0 +1,92 @@
+/* Home Page Container */
+.home-container {
+    text-align: center;
+    color: white;
+    padding: 60px 20px;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #0C3B0C, #1A1A1A);
+    padding: 60px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    margin-bottom: 40px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Hero Title */
+.hero-title {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+
+/* Hero Subtitle */
+.hero-subtitle {
+    font-size: 20px;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+/* CTA Buttons */
+.cta-buttons {
+    margin-top: 20px;
+}
+
+.btn {
+    background-color: #4b8e4b;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background-color: #0ba90b;
+    color: black;
+}
+
+.btn-secondary {
+    margin-left: 15px;
+    background-color: #1A1A1A;
+    border: 1px solid white;
+}
+
+.btn-secondary:hover {
+    background-color: white;
+    color: black;
+}
+
+/* Features Section */
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.feature {
+    background: rgba(163, 216, 163, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    width: 280px;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+}
+
+.feature:hover {
+    background: rgba(163, 216, 163, 0.3);
+    transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
